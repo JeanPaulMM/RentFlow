@@ -1,0 +1,141 @@
+/* login.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url(https://wallpapers.com/images/hd/4k-ultra-hd-city-of-new-york-skyline-7kiov1197qzy8qua.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.login-container {
+    height: 100vh;
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Capa negra con 50% de opacidad */
+    z-index: 1; /* Coloca la capa por encima del fondo */
+}
+
+.login-card {
+    background-color: rgb(34, 40, 49, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(245, 245, 245, 0.2);
+    width: 400px;
+    z-index: 2;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ffd900;
+}
+
+p {
+    font-size: 1rem;
+    color: #d6d6d6;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.form-control {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    border-radius: 0;
+}
+
+.btn {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #ffd900;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #c5a800;
+}
+
+.forgot-link {
+    font-size: 0.9rem;
+    color: #ffd900;
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    color: #c5a800;
+    text-decoration: underline;
+}
+
+.text-center a {
+    color: #3498db;
+}
+
+.text-center a:hover {
+    text-decoration: underline;
+}
+
+
+/* Hacer los campos de input transparentes */
+input[type="email"], input[type="password"] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #ccc; /* Línea gris por defecto */
+    outline: none;
+    color: #fff; /* Cambia el color del texto dentro del input si es necesario */
+    padding: 5px;
+    transition: border-color 0.3s ease; /* Transición suave en el color de la línea */
+}
+
+/* Cambiar la línea a amarillo cuando se haga clic */
+input[type="email"]:focus, input[type="password"]:focus {
+    background-color: transparent;
+    border-bottom: 2px solid yellow; /* Línea amarilla cuando el campo está enfocado */
+    color: #fff; /* Asegurarse de que el texto siga visible */
+}
+
+/* Cambiar el color del label para hacer un mejor efecto */
+label {
+    color: #fff; /* Si tienes un fondo oscuro, poner las etiquetas en blanco */
+}
+
+/* Ajustar los botones de formulario */
+button[type="submit"] {
+    background-color: #ffd900;
+    border: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    z-index: 3;
+}
