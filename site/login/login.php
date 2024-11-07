@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
     <div class="login-container d-flex justify-content-center align-items-center">
@@ -29,7 +29,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Login</button>
             </form>
-            <p class="text-center mt-3">Don't have an account? <a href="#">Sign Up</a></p>
+            <p class="text-center mt-3">Don't have an account? <a href="sign.php">Sign Up</a></p>
         </div>
     </div>
 
