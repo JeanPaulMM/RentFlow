@@ -1,9 +1,15 @@
+<?php
+require __DIR__.'/../../app/controllers/LoginController.php';
+
+$login= new LoginController();
+$log = $login->sign();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Sign!</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -22,8 +28,20 @@
             </div>
 
             <!-- Formulario de registro -->
-            <form action="ruta_del_registro" method="POST">
-                <input type="hidden" name="tipo_cuenta" id="tipoCuenta" value="inquilino">
+            <form method="POST">
+                <input type="hidden" name="tipo" id="tipoCuenta" value="inquilino">
+                <div class="form-group mb-3">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" name="apellido" class="form-control" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="telefono">Telefono</label>
+                    <input type="number" id="telefono" name="telefono" class="form-control" required>
+                </div>
                 <div class="form-group mb-3">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" class="form-control" required>
@@ -32,7 +50,8 @@
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" class="form-control" required>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Crear Cuenta</button>
+                <input type="hidden" id="accountType" name="accountType" value="inquilino">
+                <button type="submit" name="signup" class="btn btn-primary w-100">Crear Cuenta</button>
             </form>
         </div>
     </div>
@@ -45,15 +64,15 @@
         function selectAccountType(type) {
             const switchContainer = document.getElementById('accountSwitch');
             const tipoCuentaInput = document.getElementById('tipoCuenta');
+
+            tipoCuentaInput.value = type;
             
             if (type === 'inquilino') {
                 switchContainer.classList.add('active-inquilino');
                 switchContainer.classList.remove('active-anfitrion');
-                tipoCuentaInput.value = 'inquilino';
             } else {
                 switchContainer.classList.add('active-anfitrion');
                 switchContainer.classList.remove('active-inquilino');
-                tipoCuentaInput.value = 'anfitrion';
             }
         }
     </script>
