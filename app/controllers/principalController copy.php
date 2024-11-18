@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/../model/principalModel.php';
+require_once __DIR__ .'/../models/principalModel.php';
+
 
 
 class CiudadController

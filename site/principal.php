@@ -1,7 +1,9 @@
 
 <?php
 require '../conexion/conexion.php';
-require_once '../app/controller/principalController.php';
+require_once __DIR__ . '/../app/controllers/principalController.php';
+
+
 
 $ciudadesConFotos = CiudadController::mostrarCiudades();
 
@@ -87,7 +89,7 @@ $ciudadesConFotos = CiudadController::mostrarCiudades();
                             <div class="col-md-3 wow fadeInDown col-9" data-wow-delay=".2s">
                                 <ul class="list-marked-2 box-categories-list">
                                     <li>
-                                        <a href="#"><img class="imagenciudad" src="<?php echo 'images/' . $ciudad['foto_id']; ?>"/></a>
+                                        <a href="cliente/inmuebles.php"><img class="imagenciudad" src="<?php echo 'images/' . $ciudad['foto_id']; ?>"/></a>
                                         <h5 class="box-categories-title"><?php echo $ciudad['nombre']; ?></h5>
                                     </li>
                                 </ul>
