@@ -1,8 +1,8 @@
 <?php
 
-require __DIR__.'/../../app/controllers/LoginController.php';
+require __DIR__.'/../../app/controllers/UserController.php';
 
-$login= new LoginController();
+$login= new UserController();
 $log = $login->login();
 ?>
 <!-- views/login.php -->

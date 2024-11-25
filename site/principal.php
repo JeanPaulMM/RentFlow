@@ -3,8 +3,6 @@
 require '../conexion/conexion.php';
 require_once __DIR__ . '/../app/controllers/principalController.php';
 
-
-
 $ciudadesConFotos = CiudadController::mostrarCiudades();
 
 ?>
@@ -64,13 +62,15 @@ $ciudadesConFotos = CiudadController::mostrarCiudades();
                   </ul>
                   <!-- RD Navbar Nav-->
                   <ul class="rd-navbar-nav">
-                    <li class="rd-nav-item active"><a class="rd-nav-link" href="index.php">Inicio</a>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="index.php">Inicio</a>
                     </li>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="about.html">Info</a>
                     </li>
                     <!---<li class="rd-nav-item"><a class="rd-nav-link" href="typography.html">Typography</a>--->
                     </li>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="contact-us.html">Contactenos</a>
+                    </li>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="anfitrion/indxanfitrion.php">Modo Anfitrion</a>
                     </li>
                   </ul>
                 </div>

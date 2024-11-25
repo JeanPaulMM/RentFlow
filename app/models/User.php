@@ -30,4 +30,15 @@ class User {
         $stmt->execute();
     }
 
+
+    public function obtenerTipoUsuario($userId) {
+        $query = "SELECT tipo_usuario FROM usuarios WHERE id = :id";
+        $stmt = Conexion::conectar()->prepare($query);
+        $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC); // Devuelve un array con el tipo de usuario
+    }
+
 }
+
+

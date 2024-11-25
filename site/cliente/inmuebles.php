@@ -111,7 +111,7 @@ $propiedades = PropiedadesController::mostrarPropiedades();
                     <?php foreach ($propiedades as $propiedad): ?>
                         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                             <div class="card">
-                                <img class="card-img-top" src="<?php echo 'images/' . $propiedad['foto']; ?>" alt="Foto de la propiedad">
+                                <img class="card-img-top" src="<?php echo '../images/propiedades/' . $propiedad['foto']; ?>" alt="Foto de la propiedad">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $propiedad['titulo']; ?></h5>
                                     <p class="card-text"><strong>Precio:</strong> $<?php echo $propiedad['precio']; ?></p>

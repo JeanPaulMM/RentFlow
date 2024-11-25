@@ -9,5 +9,9 @@ class CiudadController
     {
         return CiudadModel::obtenerCiudadesConFotos();
     }
+
+    public static function traerCiudadesRndm(){
+        return CiudadModel::obtenerCiudadesRndm();
+    }
 }
 ?>

@@ -24702,5 +24702,59 @@ img.mfp-img {
 
 .imagenciudad{
 	width: 368px;
-	height: 360px;
+	height: 300px;
+}
+
+.anfitrionselect{
+	height:75vh;
+}
+
+/* Estilo base de los botones */
+.buttonez {
+    display: flex;
+    background-color: #10293e; /* Color base */
+    color: #3fc1c9; /* Color del icono y texto */
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    transform: scale(1); /* Tamaño inicial */
+    text-decoration: none; /* Eliminar subrayado de los enlaces */
+	height: 300px;
+	width: 300px;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Cambios al pasar el cursor */
+.buttonez:hover {
+    background-color: #3fc1c9; /* Cambia el color de fondo */
+    color: #10293e; /* Cambia el color del texto e icono */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+}
+
+/* Para el icono dentro del botón */
+.buttonez i {
+    font-size: 30px; /* Tamaño del icono */
+    margin-bottom: 10px;
+    transition: all 0.3s ease-in-out; /* Transición del icono */
+}
+
+/* Cambio del icono al pasar el cursor */
+.buttonez:hover i {
+    color: #10293e; /* Color del icono */
+}
+
+/* Para el texto dentro del botón */
+.buttonez span {
+    display: block;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out; /* Transición del texto */
+}
+
+/* Cambio del texto al pasar el cursor */
+.buttonez:hover span {
+    color: #10293e; /* Color del texto */
 }

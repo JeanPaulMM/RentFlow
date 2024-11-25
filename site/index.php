@@ -1,4 +1,9 @@
 <?php
+require '../conexion/conexion.php';
+require_once __DIR__ . '/../app/controllers/principalController.php';
+
+$ciudades = CiudadController::traerCiudadesRndm();
+
 session_start();
 if(isset($_SESSION['user'])){
     $UID = $_SESSION['user_id'];
@@ -58,9 +63,9 @@ if (isset($_GET['cerrars'])) {
                   <ul class="rd-navbar-corporate-contacts">
                     <?php if(isset($_SESSION['user'])){ ?>
                     </ul><a class="nav-link" href="?cerrars=true"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
-                          <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
-                          </svg></a>
+                      <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                      <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                      </svg></a>
                     <?php }else{ ?>
                     </ul><a class="button button-md button-default-outline-2 button-ujarak" href="login/login.php">Ingresar</a>
                     <?php } ?>
@@ -85,6 +90,8 @@ if (isset($_GET['cerrars'])) {
                     <!---<li class="rd-nav-item"><a class="rd-nav-link" href="typography.html">Typography</a>--->
                     </li>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="contact-us.html">Contactenos</a>
+                    </li>
+                    <li class="rd-nav-item"><a class="rd-nav-link" href="anfitrion/indxanfitrion.php">Modo Anfitrion</a>
                     </li>
                   </ul>
                 </div>
@@ -139,41 +146,25 @@ if (isset($_GET['cerrars'])) {
       <!-- Section Box Categories-->
       <section class="section section-lg section-top-1 bg-gray-4">
         <div class="container offset-negative-1">
-          <div class="box-categories cta-box-wrap">
-            <div class="box-categories-content">
-              <div class="row justify-content-center">
-                <div class="col-md-3 wow fadeInDown col-9" data-wow-delay=".2s">
-                  <ul class="list-marked-2 box-categories-list">
-                    <li><a href="#"><img src="images/IMG6.jpg" alt="" width="368" height="420"/></a>
-                      <h5 class="box-categories-title">Medellin</h5>
-                    </li>
-                  </ul>
+            <div class="box-categories cta-box-wrap">
+                <div class="box-categories-content">
+                    <div class="row justify-content-center">
+                        <?php foreach ($ciudades as $ciudad): ?>
+                            <div class="col-md-3 wow fadeInDown col-9" data-wow-delay=".2s">
+                                <ul class="list-marked-2 box-categories-list">
+                                    <li>
+                                      <a href="cliente/inmuebles.php">
+                                        <img src="<?php echo 'images/' . $ciudad['foto_id']; ?>" alt="<?php echo $ciudad['nombre']; ?>" style="width:368px;height:250px"/>
+                                      </a>
+                                      <h5 class="box-categories-title"><?php echo $ciudad['nombre']; ?></h5>
+                                    </li>
+                                </ul>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
-                <div class="col-md-3 wow fadeInDown col-9" data-wow-delay=".2s">
-                  <ul class="list-marked-2 box-categories-list">
-                    <li><a href="#"><img src="images/IMG5.jpg" alt="" width="368" height="420"/></a>
-                      <h5 class="box-categories-title">Cali</h5>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-md-3 wow fadeInDown col-9" data-wow-delay=".2s">
-                  <ul class="list-marked-2 box-categories-list">
-                    <li><a href="#"><img src="images/IMG4.jpg" alt="" width="368" height="420"/></a>
-                      <h5 class="box-categories-title">Bogota</h5>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-md-3 wow fadeInDown col-9" data-wow-delay=".2s">
-                  <ul class="list-marked-2 box-categories-list">
-                    <li><a href="#"><img src="images/IMG10.jpg" alt="" width="368" height="420"/></a>
-                      <h5 class="box-categories-title">Cartagena</h5>
-                    </li>
-                  </ul>
-                </div>
-              </div>
             </div>
-          </div><a class="link-classic wow fadeInUp" href="principal.php">Otras Partes<span></span></a>
-          <!-- Owl Carousel-->
+            <a class="link-classic wow fadeInUp" href="principal.php">Otras Partes<span></span></a>
         </div>
       </section>
       <!--	Our Services-->

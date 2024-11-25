@@ -2,7 +2,8 @@
 // controllers/LoginController.php
 require_once __DIR__.'/../models/User.php';
 
-class LoginController {
+class UserController {
+    
     public function login() {
         if (isset($_POST['login'])) {
             $email = $_POST['email'];
@@ -42,5 +43,16 @@ class LoginController {
                 ?><html><script>alert('El registro fallo');</script></html><?php
             }
         }
+    }
+
+    public function obtenerTipoUsuarioLogueado() {
+        session_start();
+        if (isset($_SESSION['user_id'])) {
+            $userId = $_SESSION['user_id'];
+            $userModel=new User();
+            $user=$userModel->obtenerTipoUsuario($userId);
+            return $user;
+        }
+        return null;
     }
 }
