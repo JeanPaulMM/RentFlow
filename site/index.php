@@ -1,8 +1,7 @@
 <?php
 require '../conexion/conexion.php';
 require_once __DIR__ . '/../app/controllers/principalController.php';
-
-$ciudades = CiudadController::traerCiudadesRndm();
+require_once __DIR__ . '/../app/controllers/UserController.php';
 
 session_start();
 if(isset($_SESSION['user'])){
@@ -15,6 +14,11 @@ if (isset($_GET['cerrars'])) {
   header("Location: login/login.php");
   exit();
 }
+
+$ciudades = CiudadController::traerCiudadesRndm();
+/*$userController = new UserController();
+$user = $userController->obtenerTipoUsuarioLogueado();*/
+
 ?>
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
@@ -91,8 +95,11 @@ if (isset($_GET['cerrars'])) {
                     </li>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="contact-us.html">Contactenos</a>
                     </li>
+                    <?php if(isset($_SESSION['user_id']) && $_SESSION['tipo']=='anfitrion'){ ?>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="anfitrion/indxanfitrion.php">Modo Anfitrion</a>
                     </li>
+                    <?php }
+                    ?>
                   </ul>
                 </div>
               </div>

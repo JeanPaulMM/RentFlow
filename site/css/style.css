@@ -24758,3 +24758,23 @@ img.mfp-img {
 .buttonez:hover span {
     color: #10293e; /* Color del texto */
 }
+
+.btnprop{
+	width: 100%;
+	background-color: #10293e;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	color:#fff;
+	border-radius: 8px;
+}
+
+.btnprop:hover{
+	background-color: #3fc1c9; /* Cambia el color de fondo */
+    color: #10293e; /* Cambia el color del texto e icono */
+    transform: scale(1.01); /* Aumenta ligeramente el tamaño */
+	border: #10293e solid 1px;
+	transition: all 0.3s ease-in-out;
+}
+
+.anfitrionpropiedades{
+	padding: 130px 0 90px 0;
+}

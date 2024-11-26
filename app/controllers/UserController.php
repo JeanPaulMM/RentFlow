@@ -16,6 +16,7 @@ class UserController {
                 session_start();
                 $_SESSION['user'] = $user;
                 $_SESSION['user_id'] = $user['id'];
+                $_SESSION['tipo'] = $user['tipo'];
                 header('Location: ../../site/index.php');
                 exit;
             } else {
@@ -45,14 +46,15 @@ class UserController {
         }
     }
 
-    public function obtenerTipoUsuarioLogueado() {
+    /*public static function obtenerTipoUsuarioLogueado() {
         session_start();
         if (isset($_SESSION['user_id'])) {
             $userId = $_SESSION['user_id'];
-            $userModel=new User();
-            $user=$userModel->obtenerTipoUsuario($userId);
+            $userModel = new User();
+            $user = $userModel->obtenerTipoUsuario($userId);
             return $user;
         }
         return null;
-    }
+    }*/
+    
 }

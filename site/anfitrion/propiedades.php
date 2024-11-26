@@ -21,6 +21,7 @@ if (isset($_GET['cerrars'])) {
     <meta charset="utf-8">
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <!-- Stylesheets-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7CPoppins:400%7CTeko:300,400">
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/fonts.css">
@@ -87,35 +88,19 @@ if (isset($_GET['cerrars'])) {
           </nav>
         </div>
       </header>
-      <section class="anfitrionselect">
-        <div class="container" style="display:flex; align-items:center;height:75vh">
-          <a href="propiedades.php" class="buttonez">
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
-                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
-                <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
-              </svg>
-              <span>Properties</span>
+      <section class="anfitrionpropiedades">
+        <div class="container">
+            <div class="tittle">
+                <h2 style="margin-bottom: 30px">Propiedades Publicadas</h2>
             </div>
-          </a>
-          <a href="stats.html" class="buttonez">
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="160" height="140" fill="currentColor" class="bi bi-clipboard2-pulse" viewBox="0 0 16 16">
-                <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z"/>
-                <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/>
-                <path d="M9.979 5.356a.5.5 0 0 0-.968.04L7.92 10.49l-.94-3.135a.5.5 0 0 0-.926-.08L4.69 10H4.5a.5.5 0 0 0 0 1H5a.5.5 0 0 0 .447-.276l.936-1.873 1.138 3.793a.5.5 0 0 0 .968-.04L9.58 7.51l.94 3.135A.5.5 0 0 0 11 11h.5a.5.5 0 0 0 0-1h-.128z"/>
-              </svg>
-              <span style="margin-top:20px">Stats</span>
+            <div class="contbtn">
+                <button class="btnprop" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                    </svg> 
+                    Agregar
+                </button>
             </div>
-          </a>
-          <a href="profile.html" class="buttonez">
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>
-              </svg>
-              <span>Profile</span>
-            </div>
-          </a>
         </div>
       </section>
       <!--	Our Services-->
@@ -146,7 +131,55 @@ if (isset($_GET['cerrars'])) {
     </div>
     <!-- Global Mailform Output-->
     <div class="snackbars" id="form-output-global"></div>
+
+    <form method="post">
+        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Campos del primer modal -->
+                        <input type="text" name="titulo" placeholder="Titulo para la propiedad" class="form-control mb-3">
+                        <input type="text" name="descripcion" placeholder="Campo 1" class="form-control mb-3">
+                        <input type="number" name="precio" placeholder="Campo 1" class="form-control mb-3">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">
+                            Open second modal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Campos del segundo modal -->
+                        <input type="text" name="campo2" placeholder="Campo 2" class="form-control mb-3">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
+                            Back to first
+                        </button>
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
     <!-- Javascript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/core.min.js"></script>
     <script src="../js/script.js"></script>
   </body>
