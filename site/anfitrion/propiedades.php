@@ -10,6 +10,18 @@ if (isset($_GET['cerrars'])) {
   header("Location: login/login.php");
   exit();
 }
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  require_once '../../app/controllers/propiedadController.php';
+  $controlador = new PropiedadController();
+  $controlador->crear();
+}
+
+require_once __DIR__.'/../../app/controllers/consultasController.php';
+
+$op = new consultasController();
+$ciudades = $op->mostrarCiudades();
+
 ?>
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
@@ -132,7 +144,7 @@ if (isset($_GET['cerrars'])) {
     <!-- Global Mailform Output-->
     <div class="snackbars" id="form-output-global"></div>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -142,13 +154,15 @@ if (isset($_GET['cerrars'])) {
                     </div>
                     <div class="modal-body">
                         <!-- Campos del primer modal -->
+                        <input type="hidden" name="user" value="<?php echo $UID ?>">
                         <input type="text" name="titulo" placeholder="Titulo para la propiedad" class="form-control mb-3">
-                        <input type="text" name="descripcion" placeholder="Campo 1" class="form-control mb-3">
-                        <input type="number" name="precio" placeholder="Campo 1" class="form-control mb-3">
+                        <input type="text" name="descripcion" placeholder="Descripcion" class="form-control mb-3">
+                        <input type="text" name="tipo" placeholder="Tipo(casa, apartamento, apartaestudio, etc)" class="form-control mb-3">
+                        <input type="number" name="precio" placeholder="Precio" class="form-control mb-3">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">
-                            Open second modal
+                          Siguiente
                         </button>
                     </div>
                 </div>
@@ -164,19 +178,27 @@ if (isset($_GET['cerrars'])) {
                     </div>
                     <div class="modal-body">
                         <!-- Campos del segundo modal -->
-                        <input type="text" name="campo2" placeholder="Campo 2" class="form-control mb-3">
+                        
+                        <select name="ciudad" class="form-control mb-3">
+                          <?php foreach($ciudades as $ciudad){?>
+                            <option value="<?php echo $ciudad['id']?>"><?php echo $ciudad['nombre']?></option>
+                          <?php } ?>
+                        </select>
+                        <input type="text" name="ubicacion" placeholder="ubicacion" class="form-control mb-3">
+                        <input type="text" name="capacidad" placeholder="personas permitidas" class="form-control mb-3">
+                        <input type="file" name="imagenes[]" multiple class="form-control mb-3">
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
-                            Back to first
+                          Volver
                         </button>
-                        <button type="submit" class="btn btn-success">Enviar</button>
+                        <button type="submit" class="btn btn-success">Confirmar</button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-
 
     <!-- Javascript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
