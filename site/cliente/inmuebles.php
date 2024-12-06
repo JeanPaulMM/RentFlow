@@ -1,8 +1,8 @@
 <?php
 require '../../conexion/conexion.php';
-require_once __DIR__ . '/../../app/controllers/inmueblesController.php';
+require_once __DIR__ . '/../../app/controllers/consultasController.php';
 
-$propiedades = PropiedadesController::mostrarPropiedades();
+$propiedades = consultasController::mostrarPropiedades();
 ?>
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
@@ -53,13 +53,12 @@ $propiedades = PropiedadesController::mostrarPropiedades();
 
         @media (max-width: 768px) {
             .card-img-top {
-                height: 120px;
+                height: 150px;
             }
         }
 
     </style>
     <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
-
     <div class="page">
         <header class="section page-header">
             <!-- RD Navbar-->
@@ -111,7 +110,7 @@ $propiedades = PropiedadesController::mostrarPropiedades();
                     <?php foreach ($propiedades as $propiedad): ?>
                         <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                             <div class="card">
-                                <img class="card-img-top" src="<?php echo '../images/propiedades/' . $propiedad['foto']; ?>" alt="Foto de la propiedad">
+                                <img class="card-img-top" src="<?php echo '../images/' . $propiedad['url_foto']; ?>" alt="Foto de la propiedad">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo $propiedad['titulo']; ?></h5>
                                     <p class="card-text"><strong>Precio:</strong> $<?php echo $propiedad['precio']; ?></p>

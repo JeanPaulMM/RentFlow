@@ -56,7 +56,7 @@ class Propiedad {
     
                 // Construir el nombre del archivo
                 $fotoNombre = time() . "_" . $files['imagenes']['name'][$index];
-                $directorioDestino = 'public/img/propiedades/';
+                $directorioDestino = '../../site/images/';
                 $urlFoto = $directorioDestino . $fotoNombre;
     
                 // Subir la foto al servidor
@@ -77,4 +77,4 @@ class Propiedad {
     
         return $resultado;
     }
-}    
+}

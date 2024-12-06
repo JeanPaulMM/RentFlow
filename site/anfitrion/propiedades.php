@@ -19,8 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 require_once __DIR__.'/../../app/controllers/consultasController.php';
 
+
 $op = new consultasController();
 $ciudades = $op->mostrarCiudades();
+$propiedades = $op->mostrarPropiedades();
 
 ?>
 <!DOCTYPE html>
@@ -105,6 +107,19 @@ $ciudades = $op->mostrarCiudades();
             <div class="tittle">
                 <h2 style="margin-bottom: 30px">Propiedades Publicadas</h2>
             </div>
+            <div class="propiedades-container">
+              <?php foreach ($propiedades as $propiedad): ?>
+                  <div class="propiedad-card">
+                      <img src="<?php echo $propiedad['url_foto']; ?>" alt="Imagen de la propiedad" class="propiedad-img">
+                      <div class="propiedad-info">
+                          <h3><?php echo htmlspecialchars($propiedad['titulo']); ?></h3>
+                          <p><?php echo htmlspecialchars($propiedad['ubicacion']) . ", " . htmlspecialchars($propiedad['ciudad_nombre']); ?></p>
+                          <p><strong>Precio:</strong> $<?php echo number_format($propiedad['precio'], 2); ?></p>
+                          <p><strong>Capacidad:</strong> <?php echo $propiedad['capacidad']; ?> personas</p>
+                      </div>
+                  </div>
+              <?php endforeach; ?>
+            </div>
             <div class="contbtn">
                 <button class="btnprop" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
@@ -149,7 +164,7 @@ $ciudades = $op->mostrarCiudades();
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Agregar Inmueble</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -173,7 +188,7 @@ $ciudades = $op->mostrarCiudades();
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Agregar Inmueble</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -181,7 +196,7 @@ $ciudades = $op->mostrarCiudades();
                         
                         <select name="ciudad" class="form-control mb-3">
                           <?php foreach($ciudades as $ciudad){?>
-                            <option value="<?php echo $ciudad['id']?>"><?php echo $ciudad['nombre']?></option>
+                            <option value="<?php echo $ciudad['id']?>"><?php echo $ciudad['ciudad_nombre']?></option>
                           <?php } ?>
                         </select>
                         <input type="text" name="ubicacion" placeholder="ubicacion" class="form-control mb-3">
