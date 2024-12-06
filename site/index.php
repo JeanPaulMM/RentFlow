@@ -1,6 +1,6 @@
 <?php
 require '../conexion/conexion.php';
-require_once __DIR__ . '/../app/controllers/principalController.php';
+require_once __DIR__ . '/../app/controllers/consultasController.php';
 require_once __DIR__ . '/../app/controllers/UserController.php';
 
 session_start();
@@ -15,7 +15,7 @@ if (isset($_GET['cerrars'])) {
   exit();
 }
 
-$ciudades = CiudadController::traerCiudadesRndm();
+$ciudades = ConsultasController::mostrarCiudadesRndm();
 /*$userController = new UserController();
 $user = $userController->obtenerTipoUsuarioLogueado();*/
 
@@ -161,9 +161,9 @@ $user = $userController->obtenerTipoUsuarioLogueado();*/
                                 <ul class="list-marked-2 box-categories-list">
                                     <li>
                                       <a href="cliente/inmuebles.php">
-                                        <img src="<?php echo 'images/' . $ciudad['foto_id']; ?>" alt="<?php echo $ciudad['nombre']; ?>" style="width:368px;height:250px"/>
+                                        <img src="<?php echo 'images/' . $ciudad['foto_id']; ?>" alt="<?php echo $ciudad['ciudad_nombre']; ?>" style="width:368px;height:250px"/>
                                       </a>
-                                      <h5 class="box-categories-title"><?php echo $ciudad['nombre']; ?></h5>
+                                      <h5 class="box-categories-title"><?php echo $ciudad['ciudad_nombre']; ?></h5>
                                     </li>
                                 </ul>
                             </div>

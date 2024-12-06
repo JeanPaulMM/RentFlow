@@ -6,4 +6,16 @@ class ConsultasController{
     public static function mostrarCiudades() {
         return ConsultasModel::traerCiudades();
     }
+
+    public static function mostrarCiudadesFotos() {
+        return ConsultasModel::obtenerCiudadesConFotos();
+    }
+
+    public static function mostrarCiudadesRndm() {
+        return ConsultasModel::obtenerCiudadesRndm();
+    }
+
+    public static function mostrarPropiedades(){
+        return ConsultasModel::traerPropiedades();
+    }
 }

@@ -1,9 +1,9 @@
 
 <?php
 require '../conexion/conexion.php';
-require_once __DIR__ . '/../app/controllers/principalController.php';
+require_once __DIR__ . '/../app/controllers/consultasController.php';
 
-$ciudadesConFotos = CiudadController::mostrarCiudades();
+$ciudadesConFotos = consultasController::mostrarCiudadesFotos();
 
 ?>
 <!DOCTYPE html>
@@ -70,8 +70,11 @@ $ciudadesConFotos = CiudadController::mostrarCiudades();
                     </li>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="contact-us.html">Contactenos</a>
                     </li>
+                    <?php if(isset($_SESSION['user_id']) && $_SESSION['tipo']=='anfitrion'){ ?>
                     <li class="rd-nav-item"><a class="rd-nav-link" href="anfitrion/indxanfitrion.php">Modo Anfitrion</a>
                     </li>
+                    <?php }
+                    ?>
                   </ul>
                 </div>
               </div>
@@ -90,7 +93,7 @@ $ciudadesConFotos = CiudadController::mostrarCiudades();
                                 <ul class="list-marked-2 box-categories-list">
                                     <li>
                                         <a href="cliente/inmuebles.php"><img class="imagenciudad" src="<?php echo 'images/' . $ciudad['foto_id']; ?>"/></a>
-                                        <h5 class="box-categories-title"><?php echo $ciudad['nombre']; ?></h5>
+                                        <h5 class="box-categories-title"><?php echo $ciudad['ciudad_nombre']; ?></h5>
                                     </li>
                                 </ul>
                             </div>
