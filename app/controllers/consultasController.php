@@ -18,4 +18,8 @@ class ConsultasController{
     public static function mostrarPropiedades(){
         return ConsultasModel::traerPropiedades();
     }
+
+    public static function infoPropiedad($id){
+        return ConsultasModel::TraerInfoPropiedad($id);
+    }
 }
