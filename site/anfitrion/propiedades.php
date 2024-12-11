@@ -114,7 +114,7 @@ $propiedades = $op->mostrarPropiedades();
                     <img src="<?php echo $propiedad['url_foto']; ?>" alt="Imagen de la propiedad" class="propiedad-img">
                     <div class="propiedad-info">
                         <h3><?php echo htmlspecialchars($propiedad['titulo']); ?></h3>
-                        <p><?php echo htmlspecialchars($propiedad['ubicacion']) . ", " . htmlspecialchars($propiedad['ciudad_nombre']); ?></p>
+                        <p><?php echo htmlspecialchars($propiedad['ubicacion']) . ", " . htmlspecialchars($propiedad['ciudad']); ?></p>
                         <p><strong>Precio:</strong> $<?php echo number_format($propiedad['precio'], 2); ?></p>
                         <p><strong>Capacidad:</strong> <?php echo $propiedad['capacidad']; ?> personas</p>
                     </div>
@@ -198,13 +198,12 @@ $propiedades = $op->mostrarPropiedades();
                         
                         <select name="ciudad" class="form-control mb-3">
                           <?php foreach($ciudades as $ciudad){?>
-                            <option value="<?php echo $ciudad['id']?>"><?php echo $ciudad['ciudad_nombre']?></option>
+                            <option value="<?php echo $ciudad['id_ciudad']?>"><?php echo $ciudad['ciudad_nombre']?></option>
                           <?php } ?>
                         </select>
                         <input type="text" name="ubicacion" placeholder="ubicacion" class="form-control mb-3">
                         <input type="text" name="capacidad" placeholder="personas permitidas" class="form-control mb-3">
                         <input type="file" name="imagenes[]" multiple class="form-control mb-3">
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">

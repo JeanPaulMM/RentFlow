@@ -24760,7 +24760,7 @@ img.mfp-img {
 }
 
 .btnprop{
-	width: 100%;
+	width: 80%;
 	background-color: #10293e;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	color:#fff;
@@ -24822,14 +24822,14 @@ img.mfp-img {
 
 .gallery {
     text-align: center;
-    max-width: 400px !important;
+    max-width: 1200px;
     margin: auto;
 }
 
 /* Imagen del carrusel */
 .carousel-image {
     width: 100%;
-    height: 400px !important; /* Altura fija para hacerla cuadrada */
+    height: 600px !important; /* Altura fija para hacerla cuadrada */
     object-fit: cover; /* Recorta la imagen proporcionalmente */
 }
 

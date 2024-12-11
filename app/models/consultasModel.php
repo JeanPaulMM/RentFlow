@@ -16,13 +16,24 @@ class consultasModel{
     public static function traerPropiedades()
     {
         $stmt = Conexion::conectar()->prepare("
-        SELECT * FROM propiedades p
-        INNER JOIN fotos f ON f.propiedad_id = p.id_propiedad
-        INNER JOIN ciudades c ON c.id_ciudad = p.ciudad_id
+            SELECT 
+                p.id_propiedad,
+                p.titulo,
+                p.ubicacion,
+                p.precio,
+                p.descripcion,
+                p.capacidad,
+                c.ciudad_nombre AS ciudad,
+                MIN(f.url_foto) AS url_foto -- Selecciona una foto representativa
+            FROM propiedades p
+            INNER JOIN fotos f ON f.propiedad_id = p.id_propiedad
+            INNER JOIN ciudades c ON c.id_ciudad = p.ciudad_id
+            GROUP BY p.id_propiedad, p.titulo, p.ubicacion, p.precio, p.descripcion, p.capacidad, c.ciudad_nombre
         ");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     public static function obtenerCiudadesConFotos()
     {
@@ -51,6 +62,16 @@ class consultasModel{
         $stmt =Conexion::conectar()->prepare("
         SELECT * FROM propiedades p
         INNER JOIN fotos f ON f.propiedad_id = p.id_propiedad
+        WHERE p.id_propiedad = :id");
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function TraerInfo($id)
+    {
+        $stmt =Conexion::conectar()->prepare("
+        SELECT * FROM propiedades p
         WHERE p.id_propiedad = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();

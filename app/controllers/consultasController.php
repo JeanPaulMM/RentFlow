@@ -22,4 +22,8 @@ class ConsultasController{
     public static function infoPropiedad($id){
         return ConsultasModel::TraerInfoPropiedad($id);
     }
+
+    public static function info($id){
+        return ConsultasModel::TraerInfo($id);
+    }
 }

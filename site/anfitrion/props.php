@@ -22,6 +22,7 @@ require_once __DIR__.'/../../app/controllers/consultasController.php';
 $id=$_GET['id'];
 $op = new consultasController();
 $prop = $op->infoPropiedad($id);
+$info = $op->info($id);
 
 ?>
 <!DOCTYPE html>
@@ -130,7 +131,7 @@ $prop = $op->infoPropiedad($id);
 
                 <!-- Miniaturas -->
                 <div class="thumbnails">
-                    <?php foreach ($photos as $index => $photo): ?>
+                    <?php foreach ($prop as $index => $photo): ?>
                         <img 
                             class="thumbnail" 
                             src="<?= htmlspecialchars($photo['url_foto']) ?>" 
@@ -143,7 +144,13 @@ $prop = $op->infoPropiedad($id);
         </section>
         <section class="infoprop">
             <div class="container">
-                <h2></h2>
+            <?php foreach ($info as $index => $i): ?>
+                <h2><?php echo $i['titulo']?></h2>
+                <textarea><?php echo $i['descripcion'] ?></textarea>
+                <h3>$<?php echo $i['precio']?></h3>
+                <h4><?php echo $i['capacidad']?> Personas</h4>
+                <h4><?php echo $i['tipo']?></h4>
+            <?php endforeach;?>
             </div>
         </section>
         <!--	Our Services-->
@@ -177,9 +184,14 @@ $prop = $op->infoPropiedad($id);
     <script>
         function goToSlide(index) {
             const carousel = document.querySelector('#carouselExampleFade');
+            if (!carousel) {
+                console.error('El carrusel no fue encontrado.');
+                return;
+            }
             const carouselInstance = bootstrap.Carousel.getOrCreateInstance(carousel);
             carouselInstance.to(index);
         }
+
     </script>
     <script src="../js/core.min.js"></script>
     <script src="../js/script.js"></script>
